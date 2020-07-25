@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Common;
 
 namespace WindowsFormsApp1
 {
@@ -37,7 +38,18 @@ LIMIT 1"
                 connection.Open();
 
                 command.Parameters.AddWithValue("@AreaId", this.AreaIdTextBox.Text);
+                using(var adapter = new SQLiteDataAdapter(command))
+                {
+                    adapter.Fill(dt);
+                }
 
+                if (dt.Rows.Count > 0)
+                {
+                    DataDateLabel.Text = dt.Rows[0]["DataDate"].ToString();
+                    ConditionLabel.Text = dt.Rows[0]["Condition"].ToString();
+                    TemperatureLabel.Text =
+                        CommonFunc.RoundString(Convert.ToSingle(dt.Rows[0]["Temperature"]), 2) + "C";
+                }
 
             }
         }
