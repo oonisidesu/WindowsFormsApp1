@@ -8,5 +8,7 @@ namespace WindowsFormsApp1.Common
 {
     class CommonConst
     {
+        public const string TemperatureUnitName = "℃";
+        public const int TemperatureDecimalPoint = 2;
     }
 }
