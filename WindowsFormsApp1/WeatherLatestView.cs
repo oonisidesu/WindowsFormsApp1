@@ -49,7 +49,7 @@ LIMIT 1"
                     ConditionLabel.Text = dt.Rows[0]["Condition"].ToString();
                     TemperatureLabel.Text =
                         CommonFunc.RoundString(
-                            Convert.ToSingle(dt.Rows[0]["Temperature"]), 
+                            　Convert.ToSingle(dt.Rows[0]["Temperature"]), 
                             CommonConst.TemperatureDecimalPoint) 
                             + CommonConst.TemperatureUnitName;
                 }
