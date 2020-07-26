@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
 {
     public partial class WeatherLatestView : Form
     {
-        private readonly string ConnectionString = @"D:\SQLite\20200525_Udemy\DDD.db;Version=3;";
         public WeatherLatestView()
         {
             InitializeComponent();
