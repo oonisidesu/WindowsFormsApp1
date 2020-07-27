@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Common;
+using WindowsFormsApp1.Data;
 
 namespace WindowsFormsApp1
 {
@@ -21,26 +22,7 @@ namespace WindowsFormsApp1
 
         private void LatestButton_Click(object sender, EventArgs e)
         {
-            string sql = @"
-select DataDate,
-       Condition,
-       Tempareture
-from Weather
-where AreaId = @AreaId
-order by DataDate desc
-LIMIT 1"
-;
-            DataTable dt = new DataTable();
-            using(var connection = new SQLiteConnection(ConnectionString))
-            using(var command = new SQLiteCommand(sql, connection))
-            {
-                connection.Open();
-
-                command.Parameters.AddWithValue("@AreaId", this.AreaIdTextBox.Text);
-                using(var adapter = new SQLiteDataAdapter(command))
-                {
-                    adapter.Fill(dt);
-                }
+            var dt = WetherSQLite.GetLatest(Convert.ToInt32(AreaIdTextBox.Text));
 
                 if (dt.Rows.Count > 0)
                 {
@@ -52,8 +34,6 @@ LIMIT 1"
                             CommonConst.TemperatureDecimalPoint) 
                             + CommonConst.TemperatureUnitName;
                 }
-
-            }
         }
     }
 }
