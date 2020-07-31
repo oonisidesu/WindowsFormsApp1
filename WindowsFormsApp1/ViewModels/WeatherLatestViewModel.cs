@@ -31,7 +31,7 @@ namespace WindowsFormsApp1.ViewModels
                 TemperatureText =
                     CommonFunc.RoundString(
                         Convert.ToSingle(dt.Rows[0]["Temperature"]),
-                        CommonConst.TemperatureDecimalPoint)
+                        CommonConst.TemperatureDecimalPoint) + " " 
                         + CommonConst.TemperatureUnitName;
             }
         }
