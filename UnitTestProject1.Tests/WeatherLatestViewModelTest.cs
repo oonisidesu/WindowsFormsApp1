@@ -10,7 +10,7 @@ namespace UnitTestProject1.Tests
     public class WeatherLatestViewModelTest
     {
         [TestMethod]
-        public void シナリオ()
+        public void データベース接続に関する値の確認()
         {
             var viewModel = new WeatherLatestViewModel(new WeatherMock());
             Assert.AreEqual("", viewModel.AreaIdText);
